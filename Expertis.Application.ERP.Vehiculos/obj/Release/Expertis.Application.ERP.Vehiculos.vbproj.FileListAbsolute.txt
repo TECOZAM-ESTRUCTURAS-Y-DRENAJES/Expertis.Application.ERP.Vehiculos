@@ -43,3 +43,15 @@ C:\DES EXP5R2\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehicu
 C:\DES EXP5R2\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.dll
 C:\DES EXP5R2\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.xml
 C:\DES EXP5R2\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.pdb
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\ResolveAssemblyReference.cache
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddTipo.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddEmpresa.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoBusquedaContratos.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoBusquedaVehiculos.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoVehiculos.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.Resources.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.vbproj.GenerateResource.Cache
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.dll.licenses
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.dll
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.xml
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.pdb

@@ -68,10 +68,8 @@ Partial Class MntoBusquedaVehiculos
         '
         Grid_DesignTimeLayout.LayoutString = resources.GetString("Grid_DesignTimeLayout.LayoutString")
         Me.Grid.DesignTimeLayout = Grid_DesignTimeLayout
-        Me.Grid.EntityName = "Cuadrillas"
-        Me.Grid.RequeryManually = True
         Me.Grid.Size = New System.Drawing.Size(1199, 482)
-        Me.Grid.ViewName = "tbVehiculoCuadrilla"
+        Me.Grid.ViewName = "vVehiculoCompleta"
         '
         'Toolbar
         '
@@ -191,9 +189,8 @@ Partial Class MntoBusquedaVehiculos
         'MntoBusquedaVehiculos
         '
         Me.ClientSize = New System.Drawing.Size(1207, 676)
-        Me.EntityName = "Cuadrillas"
         Me.Name = "MntoBusquedaVehiculos"
-        Me.ViewName = "tbVehiculoCuadrilla"
+        Me.ViewName = "vVehiculoCompleta"
         Me.FilterPanel.ResumeLayout(False)
         Me.FilterPanel.PerformLayout()
         Me.CIMntoGridPanel.ResumeLayout(False)

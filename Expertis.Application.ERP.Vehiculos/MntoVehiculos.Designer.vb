@@ -38,20 +38,22 @@ Partial Class MntoVehiculos
         Me.cmbEmp = New Solmicro.Expertis.Engine.UI.ComboBox
         Me.Tab = New Solmicro.Expertis.Engine.UI.Tab
         Me.TabContratos = New Janus.Windows.UI.Tab.UITabPage
-        Me.txtPrecio = New Solmicro.Expertis.Engine.UI.TextBox
-        Me.txtIDContrato = New Solmicro.Expertis.Engine.UI.TextBox
-        Me.btnActualizar = New Solmicro.Expertis.Engine.UI.Button
+        Me.Panel6 = New Solmicro.Expertis.Engine.UI.Panel
         Me.Grid1 = New Solmicro.Expertis.Engine.UI.Grid
-        Me.Label9 = New Solmicro.Expertis.Engine.UI.Label
-        Me.btnGuardar = New Solmicro.Expertis.Engine.UI.Button
-        Me.txtLEntrega = New Solmicro.Expertis.Engine.UI.TextBox
-        Me.cmbFFin = New Solmicro.Expertis.Engine.UI.CalendarBox
-        Me.Label7 = New Solmicro.Expertis.Engine.UI.Label
-        Me.Label8 = New Solmicro.Expertis.Engine.UI.Label
-        Me.txtLRecogida = New Solmicro.Expertis.Engine.UI.TextBox
+        Me.Panel5 = New Solmicro.Expertis.Engine.UI.Panel
         Me.cmbFInicio = New Solmicro.Expertis.Engine.UI.CalendarBox
-        Me.Label6 = New Solmicro.Expertis.Engine.UI.Label
+        Me.txtPrecio = New Solmicro.Expertis.Engine.UI.TextBox
         Me.Label5 = New Solmicro.Expertis.Engine.UI.Label
+        Me.txtIDContrato = New Solmicro.Expertis.Engine.UI.TextBox
+        Me.Label6 = New Solmicro.Expertis.Engine.UI.Label
+        Me.btnActualizar = New Solmicro.Expertis.Engine.UI.Button
+        Me.txtLRecogida = New Solmicro.Expertis.Engine.UI.TextBox
+        Me.Label8 = New Solmicro.Expertis.Engine.UI.Label
+        Me.Label9 = New Solmicro.Expertis.Engine.UI.Label
+        Me.Label7 = New Solmicro.Expertis.Engine.UI.Label
+        Me.btnGuardar = New Solmicro.Expertis.Engine.UI.Button
+        Me.cmbFFin = New Solmicro.Expertis.Engine.UI.CalendarBox
+        Me.txtLEntrega = New Solmicro.Expertis.Engine.UI.TextBox
         Me.TabCuadrillas = New Janus.Windows.UI.Tab.UITabPage
         Me.Panel2 = New Solmicro.Expertis.Engine.UI.Panel
         Me.Grid2 = New Solmicro.Expertis.Engine.UI.Grid
@@ -107,8 +109,6 @@ Partial Class MntoVehiculos
         Me.txtMatricula = New Solmicro.Expertis.Engine.UI.TextBox
         Me.Panel3 = New Solmicro.Expertis.Engine.UI.Panel
         Me.Panel4 = New Solmicro.Expertis.Engine.UI.Panel
-        Me.Panel5 = New Solmicro.Expertis.Engine.UI.Panel
-        Me.Panel6 = New Solmicro.Expertis.Engine.UI.Panel
         CType(Me.ToolBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MenuBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UiCommandManager1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -118,7 +118,9 @@ Partial Class MntoVehiculos
         CType(Me.Tab, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tab.SuspendLayout()
         Me.TabContratos.SuspendLayout()
+        Me.Panel6.suspendlayout()
         CType(Me.Grid1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel5.suspendlayout()
         Me.TabCuadrillas.SuspendLayout()
         Me.Panel2.suspendlayout()
         CType(Me.Grid2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,8 +131,6 @@ Partial Class MntoVehiculos
         CType(Me.Grid3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.suspendlayout()
         Me.Panel4.suspendlayout()
-        Me.Panel5.suspendlayout()
-        Me.Panel6.suspendlayout()
         Me.SuspendLayout()
         '
         'ToolBar
@@ -247,30 +247,14 @@ Partial Class MntoVehiculos
         Me.TabContratos.TabStop = True
         Me.TabContratos.Text = "Contratos"
         '
-        'txtPrecio
+        'Panel6
         '
-        Me.txtPrecio.DisabledBackColor = System.Drawing.Color.White
-        Me.txtPrecio.Location = New System.Drawing.Point(773, 16)
-        Me.txtPrecio.Name = "txtPrecio"
-        Me.txtPrecio.Size = New System.Drawing.Size(100, 21)
-        Me.txtPrecio.TabIndex = 29
-        '
-        'txtIDContrato
-        '
-        Me.txtIDContrato.DisabledBackColor = System.Drawing.Color.White
-        Me.txtIDContrato.Location = New System.Drawing.Point(935, 16)
-        Me.txtIDContrato.Name = "txtIDContrato"
-        Me.txtIDContrato.Size = New System.Drawing.Size(100, 21)
-        Me.txtIDContrato.TabIndex = 28
-        Me.txtIDContrato.Visible = False
-        '
-        'btnActualizar
-        '
-        Me.btnActualizar.Location = New System.Drawing.Point(895, 51)
-        Me.btnActualizar.Name = "btnActualizar"
-        Me.btnActualizar.Size = New System.Drawing.Size(140, 23)
-        Me.btnActualizar.TabIndex = 27
-        Me.btnActualizar.Text = "Actualizar"
+        Me.Panel6.Controls.Add(Me.Grid1)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(0, 97)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1077, 398)
+        Me.Panel6.TabIndex = 31
         '
         'Grid1
         '
@@ -289,61 +273,26 @@ Partial Class MntoVehiculos
         Me.Grid1.TabIndex = 11
         Me.Grid1.ViewName = "tbVehiculoContrato"
         '
-        'Label9
+        'Panel5
         '
-        Me.Label9.Location = New System.Drawing.Point(725, 20)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(42, 13)
-        Me.Label9.TabIndex = 10
-        Me.Label9.Text = "Precio"
-        '
-        'btnGuardar
-        '
-        Me.btnGuardar.Location = New System.Drawing.Point(728, 51)
-        Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(140, 23)
-        Me.btnGuardar.TabIndex = 9
-        Me.btnGuardar.Text = "Guardar"
-        '
-        'txtLEntrega
-        '
-        Me.txtLEntrega.DisabledBackColor = System.Drawing.Color.White
-        Me.txtLEntrega.Location = New System.Drawing.Point(121, 50)
-        Me.txtLEntrega.Name = "txtLEntrega"
-        Me.txtLEntrega.Size = New System.Drawing.Size(216, 21)
-        Me.txtLEntrega.TabIndex = 7
-        '
-        'cmbFFin
-        '
-        Me.cmbFFin.DisabledBackColor = System.Drawing.Color.White
-        Me.cmbFFin.Location = New System.Drawing.Point(463, 16)
-        Me.cmbFFin.Name = "cmbFFin"
-        Me.cmbFFin.Size = New System.Drawing.Size(216, 21)
-        Me.cmbFFin.TabIndex = 6
-        '
-        'Label7
-        '
-        Me.Label7.Location = New System.Drawing.Point(16, 54)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(87, 13)
-        Me.Label7.TabIndex = 5
-        Me.Label7.Text = "Lugar Entrega"
-        '
-        'Label8
-        '
-        Me.Label8.Location = New System.Drawing.Point(358, 20)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(67, 13)
-        Me.Label8.TabIndex = 4
-        Me.Label8.Text = "Fecha fin :"
-        '
-        'txtLRecogida
-        '
-        Me.txtLRecogida.DisabledBackColor = System.Drawing.Color.White
-        Me.txtLRecogida.Location = New System.Drawing.Point(463, 50)
-        Me.txtLRecogida.Name = "txtLRecogida"
-        Me.txtLRecogida.Size = New System.Drawing.Size(216, 21)
-        Me.txtLRecogida.TabIndex = 3
+        Me.Panel5.Controls.Add(Me.cmbFInicio)
+        Me.Panel5.Controls.Add(Me.txtPrecio)
+        Me.Panel5.Controls.Add(Me.Label5)
+        Me.Panel5.Controls.Add(Me.txtIDContrato)
+        Me.Panel5.Controls.Add(Me.Label6)
+        Me.Panel5.Controls.Add(Me.btnActualizar)
+        Me.Panel5.Controls.Add(Me.txtLRecogida)
+        Me.Panel5.Controls.Add(Me.Label8)
+        Me.Panel5.Controls.Add(Me.Label9)
+        Me.Panel5.Controls.Add(Me.Label7)
+        Me.Panel5.Controls.Add(Me.btnGuardar)
+        Me.Panel5.Controls.Add(Me.cmbFFin)
+        Me.Panel5.Controls.Add(Me.txtLEntrega)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(0, 0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1077, 97)
+        Me.Panel5.TabIndex = 30
         '
         'cmbFInicio
         '
@@ -353,13 +302,13 @@ Partial Class MntoVehiculos
         Me.cmbFInicio.Size = New System.Drawing.Size(216, 21)
         Me.cmbFInicio.TabIndex = 2
         '
-        'Label6
+        'txtPrecio
         '
-        Me.Label6.Location = New System.Drawing.Point(358, 54)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(95, 13)
-        Me.Label6.TabIndex = 1
-        Me.Label6.Text = "Lugar Recogida"
+        Me.txtPrecio.DisabledBackColor = System.Drawing.Color.White
+        Me.txtPrecio.Location = New System.Drawing.Point(773, 16)
+        Me.txtPrecio.Name = "txtPrecio"
+        Me.txtPrecio.Size = New System.Drawing.Size(100, 21)
+        Me.txtPrecio.TabIndex = 29
         '
         'Label5
         '
@@ -368,6 +317,87 @@ Partial Class MntoVehiculos
         Me.Label5.Size = New System.Drawing.Size(82, 13)
         Me.Label5.TabIndex = 0
         Me.Label5.Text = "Fecha inicio :"
+        '
+        'txtIDContrato
+        '
+        Me.txtIDContrato.DisabledBackColor = System.Drawing.Color.White
+        Me.txtIDContrato.Location = New System.Drawing.Point(935, 16)
+        Me.txtIDContrato.Name = "txtIDContrato"
+        Me.txtIDContrato.Size = New System.Drawing.Size(100, 21)
+        Me.txtIDContrato.TabIndex = 28
+        Me.txtIDContrato.Visible = False
+        '
+        'Label6
+        '
+        Me.Label6.Location = New System.Drawing.Point(358, 54)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(95, 13)
+        Me.Label6.TabIndex = 1
+        Me.Label6.Text = "Lugar Recogida"
+        '
+        'btnActualizar
+        '
+        Me.btnActualizar.Location = New System.Drawing.Point(895, 51)
+        Me.btnActualizar.Name = "btnActualizar"
+        Me.btnActualizar.Size = New System.Drawing.Size(140, 23)
+        Me.btnActualizar.TabIndex = 27
+        Me.btnActualizar.Text = "Actualizar"
+        '
+        'txtLRecogida
+        '
+        Me.txtLRecogida.DisabledBackColor = System.Drawing.Color.White
+        Me.txtLRecogida.Location = New System.Drawing.Point(463, 50)
+        Me.txtLRecogida.Name = "txtLRecogida"
+        Me.txtLRecogida.Size = New System.Drawing.Size(216, 21)
+        Me.txtLRecogida.TabIndex = 3
+        '
+        'Label8
+        '
+        Me.Label8.Location = New System.Drawing.Point(358, 20)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(67, 13)
+        Me.Label8.TabIndex = 4
+        Me.Label8.Text = "Fecha fin :"
+        '
+        'Label9
+        '
+        Me.Label9.Location = New System.Drawing.Point(725, 20)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(42, 13)
+        Me.Label9.TabIndex = 10
+        Me.Label9.Text = "Precio"
+        '
+        'Label7
+        '
+        Me.Label7.Location = New System.Drawing.Point(16, 54)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(87, 13)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Lugar Entrega"
+        '
+        'btnGuardar
+        '
+        Me.btnGuardar.Location = New System.Drawing.Point(728, 51)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(140, 23)
+        Me.btnGuardar.TabIndex = 9
+        Me.btnGuardar.Text = "Guardar"
+        '
+        'cmbFFin
+        '
+        Me.cmbFFin.DisabledBackColor = System.Drawing.Color.White
+        Me.cmbFFin.Location = New System.Drawing.Point(463, 16)
+        Me.cmbFFin.Name = "cmbFFin"
+        Me.cmbFFin.Size = New System.Drawing.Size(216, 21)
+        Me.cmbFFin.TabIndex = 6
+        '
+        'txtLEntrega
+        '
+        Me.txtLEntrega.DisabledBackColor = System.Drawing.Color.White
+        Me.txtLEntrega.Location = New System.Drawing.Point(121, 50)
+        Me.txtLEntrega.Name = "txtLEntrega"
+        Me.txtLEntrega.Size = New System.Drawing.Size(216, 21)
+        Me.txtLEntrega.TabIndex = 7
         '
         'TabCuadrillas
         '
@@ -911,36 +941,6 @@ Partial Class MntoVehiculos
         Me.Panel4.Size = New System.Drawing.Size(1079, 517)
         Me.Panel4.TabIndex = 15
         '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.cmbFInicio)
-        Me.Panel5.Controls.Add(Me.txtPrecio)
-        Me.Panel5.Controls.Add(Me.Label5)
-        Me.Panel5.Controls.Add(Me.txtIDContrato)
-        Me.Panel5.Controls.Add(Me.Label6)
-        Me.Panel5.Controls.Add(Me.btnActualizar)
-        Me.Panel5.Controls.Add(Me.txtLRecogida)
-        Me.Panel5.Controls.Add(Me.Label8)
-        Me.Panel5.Controls.Add(Me.Label9)
-        Me.Panel5.Controls.Add(Me.Label7)
-        Me.Panel5.Controls.Add(Me.btnGuardar)
-        Me.Panel5.Controls.Add(Me.cmbFFin)
-        Me.Panel5.Controls.Add(Me.txtLEntrega)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(0, 0)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1077, 97)
-        Me.Panel5.TabIndex = 30
-        '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.Grid1)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 97)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1077, 398)
-        Me.Panel6.TabIndex = 31
-        '
         'MntoVehiculos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
@@ -960,7 +960,10 @@ Partial Class MntoVehiculos
         CType(Me.Tab, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tab.ResumeLayout(False)
         Me.TabContratos.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         CType(Me.Grid1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
         Me.TabCuadrillas.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         CType(Me.Grid2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -976,9 +979,6 @@ Partial Class MntoVehiculos
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

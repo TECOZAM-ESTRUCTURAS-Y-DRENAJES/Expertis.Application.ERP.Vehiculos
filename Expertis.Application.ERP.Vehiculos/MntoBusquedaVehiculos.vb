@@ -4,7 +4,7 @@ Imports Solmicro.Expertis.Engine.DAL
 Imports Solmicro.Expertis.Engine.UI
 Imports Solmicro.Expertis.Application.ERP.GlobalActions
 Imports Solmicro.Expertis
-Imports Newtonsoft.Json
+'Imports Newtonsoft.Json
 
 Public Class MntoBusquedaVehiculos
     Inherits Solmicro.Expertis.Engine.UI.CIMnto
