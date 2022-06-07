@@ -55,3 +55,5 @@ C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Ex
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.dll
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.xml
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.pdb
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.frmInformeFecha.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddPrecios.resources

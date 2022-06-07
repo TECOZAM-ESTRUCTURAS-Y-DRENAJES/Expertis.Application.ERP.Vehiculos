@@ -31,6 +31,43 @@ Public Class MntoBusquedaVehiculos
 
 
     End Sub
+    Private Sub LoadToolbarActions()
+        Me.FormActions.Add("Vehiculos entres dos fechas.", AddressOf VehiculosEntreFechas, ExpertisApp.GetIcon("alarmclock_run.ico"))
+    End Sub
+
+    Private Sub LoadGridActions()
+        With Grid
+            .Actions.Add("Abrir Vehiculo", AddressOf CargarVehiculo, ExpertisApp.GetIcon("wheel.ico"))
+        End With
+    End Sub
+
+    Private Sub CargarVehiculo()
+        With Grid
+            If Length(.Value("Matricula")) > 0 Then
+                ExpertisApp.OpenForm("VEHICULOS", New StringFilterItem("Matricula", .Value("Matricula")))
+            End If
+        End With
+    End Sub
+
+    Private Sub VehiculosEntreFechas()
+        Dim Fecha1 As Date
+        Dim Fecha2 As Date
+
+        Dim frm As New frmInformeFecha
+        frm.ShowDialog()
+
+        Fecha1 = frm.FechaDesde.Value
+        Fecha2 = frm.FechaHasta.Value
+
+        Dim sql As String = "SELECT * FROM vVehiculocompleta where FInicio<= '" & Fecha2 & "' AND ((FFin>= '" & Fecha1 & "' AND FFin<= '" & Fecha2 & "') OR FFin is null)"
+        Dim contrato As New Business.Vehiculos.Contratos
+        Dim dt As New DataTable
+        dt = contrato.EjecutarSqlSelect(sql)
+
+
+        Grid.DataSource = dt
+
+    End Sub
 
     Protected Overridable Sub AplicarFiltros(ByRef e As Engine.UI.QueryExecutingEventArgs)
 
@@ -51,4 +88,8 @@ Public Class MntoBusquedaVehiculos
 
     End Function
 
+    Private Sub MntoBusquedaVehiculos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        LoadToolbarActions()
+        LoadGridActions()
+    End Sub
 End Class

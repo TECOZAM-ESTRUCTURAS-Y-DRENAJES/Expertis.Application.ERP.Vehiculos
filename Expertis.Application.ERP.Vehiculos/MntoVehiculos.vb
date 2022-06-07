@@ -159,6 +159,35 @@ Public Class MntoVehiculos
         End If
     End Sub
 
+    Private Sub nuevoRegistroConsumo()
+        ' TabPage Bajas
+        If MsgBox("¿Desea guardar al histórico el registro actual y añadir uno nuevo?", MsgBoxStyle.YesNo, "Generar histórico") = MsgBoxResult.Yes Then
+            Dim cons As New Consumo
+            Dim dt As New DataTable
+
+            dt.Columns.Add("IDConsumo")
+            dt.Columns.Add("IDVehiculo")
+            dt.Columns.Add("Consumo")
+            dt.Columns.Add("Kilometros")
+            dt.Columns.Add("Fecha")
+
+            Dim dr As DataRow = dt.NewRow()
+
+            'dr("IDConsumo") = Me.CurrentRow("IDConsumo")
+            dr("IDVehiculo") = Me.CurrentRow("IDVehiculo")
+            dr("Consumo") = Me.txtconsumo.Text
+            dr("Kilometros") = Me.txtkm.Text
+            dr("Fecha") = Me.cbFechaCons.Value
+
+            dt.Rows.Add(dr)
+
+            cons.Update(dt)
+            ' Limpiar memoria
+            cons = Nothing
+            Me.RequeryData()
+        End If
+    End Sub
+
     Private Sub Grid1_RowDoubleClick(ByVal sender As System.Object, ByVal e As Janus.Windows.GridEX.RowActionEventArgs) Handles Grid1.RowDoubleClick
         btnGuardar.Enabled = False
         btnActualizar.Enabled = True
@@ -276,8 +305,13 @@ Public Class MntoVehiculos
     Private Sub ActualizarContrato()
 
         Dim obj As New Contratos
+        Dim sql As String
+        If cmbFFin.Value.ToString.Length = 0 Then
+            sql = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & txtPrecio.Text & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
+        Else
+            sql = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', FFin = '" & cmbFFin.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & txtPrecio.Text & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
+        End If
 
-        Dim sql As String = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', FFin = '" & cmbFFin.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & txtPrecio.Text & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
 
         obj.EjecutarSql(sql)
 
@@ -365,6 +399,49 @@ Public Class MntoVehiculos
 
         Me.FormActions.Add("Añadir Empresa", AddressOf AccionNuevaEmpresa)
         Me.FormActions.Add("Añadir Tipo Vehiculo", AddressOf AccionNuevoTipo)
+        Me.FormActions.Add("Añadir y/o Modificar Tarifa Vehiculo", AddressOf AccionNuevaTarifa)
+        Me.AddSeparator()
+        Me.FormActions.Add("Actualizar tarifas", AddressOf ActualizarTarifas)
+
+    End Sub
+    Public Sub ActualizarTarifas()
+        'Tengo que recojer todos los contratos(tbVehiculoContrato) cuya
+        'FFin sea nula, es decir, que el contrato siga en pie.
+        Dim filtro As New Filter
+        Dim obj As New Observaciones
+        filtro.Add("FFin", FilterOperator.Equal, DBNull.Value)
+        Dim dt As New DataTable
+        dt = New BE.DataEngine().Filter("tbVehiculoContrato", filtro)
+
+        Dim contador As Integer = 0
+        'MsgBox(dt.Rows.Count)
+        For Each dr As DataRow In dt.Rows
+            '1.Saco según la empresa y el tipo, el precio
+            Dim f As New Filter
+            f.Add("IDVehiculo", FilterOperator.Equal, dt(contador)("IDVehiculo"))
+            Dim dt2 As New DataTable
+            dt2 = New BE.DataEngine().Filter("vVehiculoCompleta", f, "IDTipo, IDEmpresa")
+
+            Try
+                Dim f2 As New Filter
+                f2.Add("IDtipo", FilterOperator.Equal, dt2(0)("IDTipo"))
+                f2.Add("IDEmpresa", FilterOperator.Equal, dt2(0)("IDEmpresa"))
+
+                Dim dt3 As New DataTable
+                dt3 = New BE.DataEngine().Filter("vVehiculoTipoEmpresa", f2, "Precio")
+                '2.Hago el update en tbVehiculoContrato del precio
+                Dim sql As String = "UPDATE tbVehiculoContrato SET Precio ='" & dt3(0)("Precio") & "' WHERE IDVehiculo = " & dt(contador)("IDVehiculo")
+
+                obj.EjecutarSql(sql)
+            Catch ex As Exception
+
+            End Try
+            contador += 1
+        Next
+        MsgBox("Precios Actualizados Correctamente.")
+    End Sub
+    Public Sub AccionNuevaTarifa()
+        Dim oFrm As Form = ExpertisApp.OpenForm("VEHITARI", , , Me)
 
     End Sub
 
@@ -443,6 +520,7 @@ Public Class MntoVehiculos
     Private Sub MntoVehiculos_Navigated(ByVal sender As Object, ByVal e As Solmicro.Expertis.Engine.UI.NavigatedEventArgs) Handles Me.Navigated
         limpiarFormCuadrilla()
         limpiarFormContrato()
+        limpiarFormConsumo()
     End Sub
     Private Sub limpiarFormContrato()
         cmbFInicio.Value = DBNull.Value
@@ -455,6 +533,54 @@ Public Class MntoVehiculos
         btnActualizar.Enabled = False
 
     End Sub
+    Private Sub limpiarFormConsumo()
+        txtconsumo.Clear()
+        cbFechaCons.Value = DBNull.Value
+        txtkm.Clear()
 
 
+    End Sub
+
+
+    Private Sub bGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bGuardar.Click
+        nuevoRegistroConsumo()
+        limpiarFormConsumo()
+
+    End Sub
+
+    Private Sub bActualizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bActualizar.Click
+        Dim obj As New Observaciones
+
+        Dim sql As String = "UPDATE tbVehiculoConsumo SET Consumo ='" & txtconsumo.Text & "', Fecha = '" & cbFechaCons.Value & "', Kilometros = '" & txtkm.Text & "' WHERE IDConsumo = " & txtIDConsumo.Text
+
+        obj.EjecutarSql(sql)
+
+        Me.RequeryData()
+    End Sub
+
+    Private Sub Grid4_RowDoubleClick(ByVal sender As System.Object, ByVal e As Janus.Windows.GridEX.RowActionEventArgs) Handles Grid4.RowDoubleClick
+        Me.txtconsumo.Text = Grid4.GetValue("Consumo")
+        Me.cbFechaCons.Value = Grid4.GetValue("Fecha")
+        Me.txtkm.Text = Grid4.GetValue("Kilometros")
+        Me.txtIDConsumo.Text = Grid4.GetValue("IDConsumo")
+
+    End Sub
+
+    Private Sub cmbTipo_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbTipo.ValueChanged
+        Dim empresa As String
+        Dim tipo As String
+        empresa = cmbEmp.Text
+        tipo = cmbTipo.Text
+
+        Dim filtro As New Filter
+        filtro.Add("Empresa", FilterOperator.Equal, empresa)
+        filtro.Add("TipoVehiculo", FilterOperator.Equal, tipo)
+
+        Dim dt As New DataTable
+        dt = New BE.DataEngine().Filter("tbVehiculoTarifa", filtro)
+
+        txtPrecio.Text = dt(0)("Precio")
+        filtro.Clear()
+        dt = Nothing
+    End Sub
 End Class
