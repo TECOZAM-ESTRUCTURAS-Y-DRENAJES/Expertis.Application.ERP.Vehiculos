@@ -483,13 +483,9 @@ Public Class MntoVehiculos
 
 #End Region
 
-
-
     Private Sub advObra_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles advObra.TextChanged
         'ulObra.Text = Me.advObra.SelectedRow("DescObra")
         'Me.advObra.ASSelectedFields("DescObra", ulObra.Text)
-
-
     End Sub
 
     Private Sub limpiarFormCuadrilla()
