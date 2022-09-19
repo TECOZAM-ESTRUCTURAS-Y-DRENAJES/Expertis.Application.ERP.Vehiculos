@@ -3,6 +3,7 @@ Imports Solmicro.Expertis.Engine
 Imports Solmicro.Expertis.Engine.DAL
 Imports Solmicro.Expertis.Engine.UI
 Imports Solmicro.Expertis.Application.ERP.GlobalActions
+Imports Expertis.Business.Pisos
 
 Public Class MntoVehiculos
     Inherits Solmicro.Expertis.Engine.UI.SimpleMnto
@@ -33,7 +34,7 @@ Public Class MntoVehiculos
         ' TabPage Bajas
         If MsgBox("¿Desea guardar al histórico el registro actual y añadir uno nuevo?", MsgBoxStyle.YesNo, "Generar histórico") = MsgBoxResult.Yes Then
             Dim contrato As New Contratos
-
+            Dim cont As New ContratosPisos
             Dim dt As New DataTable
 
             dt.Columns.Add("IDVehiculo")
@@ -49,6 +50,7 @@ Public Class MntoVehiculos
             Dim dr As DataRow = dt.NewRow()
 
             dr("IDVehiculo") = Me.CurrentRow("IDVehiculo")
+            dr("IDContrato") = cont.devuelveAutonumeri
             dr("FInicio") = Me.cmbFInicio.Value
             dr("FFin") = Me.cmbFFin.Value
             dr("LRecogida") = Me.txtLRecogida.Text
@@ -70,7 +72,7 @@ Public Class MntoVehiculos
         ' TabPage Bajas
         If MsgBox("¿Desea guardar al histórico el registro actual y añadir uno nuevo?", MsgBoxStyle.YesNo, "Generar histórico") = MsgBoxResult.Yes Then
             Dim cuadrilla As New Cuadrillas
-
+            Dim cont As New ContratosPisos
             Dim dt As New DataTable
 
             dt.Columns.Add("IDCuadrilla")
@@ -93,6 +95,7 @@ Public Class MntoVehiculos
             If Not Me.txtIDCuadrilla.Text = "" Then
                 dr("IDCuadrilla") = Me.txtIDCuadrilla.Text
             End If
+            dr("IDCuadrilla") = cont.devuelveAutonumeri
             dr("IDVehiculo") = Nz(Me.CurrentRow("IDVehiculo"), "")
             dr("FInicio") = Nz(Me.cmCFInicio.Value, "")
             dr("FFin") = Nz(Me.cmCFFin.Value, "")
