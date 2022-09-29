@@ -35,6 +35,10 @@ Partial Class MntoBusquedaVehiculos
         Me.lblFFin = New Solmicro.Expertis.Engine.UI.Label
         Me.clbCUAFInicio = New Solmicro.Expertis.Engine.UI.CalendarBox
         Me.lblFInicio = New Solmicro.Expertis.Engine.UI.Label
+        Me.Label1 = New Solmicro.Expertis.Engine.UI.Label
+        Me.clbCUAFInicioMenor = New Solmicro.Expertis.Engine.UI.CalendarBox
+        Me.Label2 = New Solmicro.Expertis.Engine.UI.Label
+        Me.clbCUAFFinMenor = New Solmicro.Expertis.Engine.UI.CalendarBox
         Me.FilterPanel.SuspendLayout()
         Me.CIMntoGridPanel.suspendlayout()
         CType(Me.Grid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -49,6 +53,10 @@ Partial Class MntoBusquedaVehiculos
         '
         'FilterPanel
         '
+        Me.FilterPanel.Controls.Add(Me.clbCUAFFinMenor)
+        Me.FilterPanel.Controls.Add(Me.Label2)
+        Me.FilterPanel.Controls.Add(Me.clbCUAFInicioMenor)
+        Me.FilterPanel.Controls.Add(Me.Label1)
         Me.FilterPanel.Controls.Add(Me.clbCUAFInicio)
         Me.FilterPanel.Controls.Add(Me.lblFInicio)
         Me.FilterPanel.Controls.Add(Me.clbCUAFFin)
@@ -117,7 +125,7 @@ Partial Class MntoBusquedaVehiculos
         Me.advIDVehiculo.DisabledBackColor = System.Drawing.Color.White
         Me.advIDVehiculo.DisplayField = "Matricula"
         Me.advIDVehiculo.EntityName = "Vehiculo"
-        Me.advIDVehiculo.Location = New System.Drawing.Point(120, 46)
+        Me.advIDVehiculo.Location = New System.Drawing.Point(120, 26)
         Me.advIDVehiculo.Name = "advIDVehiculo"
         Me.advIDVehiculo.PrimaryDataFields = "IDVehiculo"
         Me.advIDVehiculo.SecondaryDataFields = "idVehiculo"
@@ -126,7 +134,7 @@ Partial Class MntoBusquedaVehiculos
         '
         'lblMatricula
         '
-        Me.lblMatricula.Location = New System.Drawing.Point(44, 51)
+        Me.lblMatricula.Location = New System.Drawing.Point(44, 31)
         Me.lblMatricula.Name = "lblMatricula"
         Me.lblMatricula.Size = New System.Drawing.Size(58, 13)
         Me.lblMatricula.TabIndex = 2
@@ -138,7 +146,7 @@ Partial Class MntoBusquedaVehiculos
         Me.advConductor1.DisabledBackColor = System.Drawing.Color.White
         Me.advConductor1.DisplayField = "DescOperario"
         Me.advConductor1.EntityName = "Operario"
-        Me.advConductor1.Location = New System.Drawing.Point(389, 47)
+        Me.advConductor1.Location = New System.Drawing.Point(120, 65)
         Me.advConductor1.Name = "advConductor1"
         Me.advConductor1.SecondaryDataFields = "IDOperario"
         Me.advConductor1.Size = New System.Drawing.Size(121, 23)
@@ -146,7 +154,7 @@ Partial Class MntoBusquedaVehiculos
         '
         'lblConductor1
         '
-        Me.lblConductor1.Location = New System.Drawing.Point(310, 51)
+        Me.lblConductor1.Location = New System.Drawing.Point(36, 70)
         Me.lblConductor1.Name = "lblConductor1"
         Me.lblConductor1.Size = New System.Drawing.Size(66, 13)
         Me.lblConductor1.TabIndex = 4
@@ -156,35 +164,67 @@ Partial Class MntoBusquedaVehiculos
         '
         Me.TryDataBinding(clbCUAFFin, New System.Windows.Forms.Binding("BindableValue", Me, "FFin", True))
         Me.clbCUAFFin.DisabledBackColor = System.Drawing.Color.White
-        Me.clbCUAFFin.Location = New System.Drawing.Point(859, 48)
+        Me.clbCUAFFin.Location = New System.Drawing.Point(582, 23)
         Me.clbCUAFFin.Name = "clbCUAFFin"
         Me.clbCUAFFin.Size = New System.Drawing.Size(121, 21)
         Me.clbCUAFFin.TabIndex = 6
         '
         'lblFFin
         '
-        Me.lblFFin.Location = New System.Drawing.Point(824, 52)
+        Me.lblFFin.Location = New System.Drawing.Point(519, 26)
         Me.lblFFin.Name = "lblFFin"
-        Me.lblFFin.Size = New System.Drawing.Size(29, 13)
+        Me.lblFFin.Size = New System.Drawing.Size(57, 13)
         Me.lblFFin.TabIndex = 7
-        Me.lblFFin.Text = "FFin"
+        Me.lblFFin.Text = "F. Fin >="
         '
         'clbCUAFInicio
         '
         Me.TryDataBinding(clbCUAFInicio, New System.Windows.Forms.Binding("BindableValue", Me, "FInicio", True))
         Me.clbCUAFInicio.DisabledBackColor = System.Drawing.Color.White
-        Me.clbCUAFInicio.Location = New System.Drawing.Point(635, 49)
+        Me.clbCUAFInicio.Location = New System.Drawing.Point(356, 23)
         Me.clbCUAFInicio.Name = "clbCUAFInicio"
         Me.clbCUAFInicio.Size = New System.Drawing.Size(121, 21)
         Me.clbCUAFInicio.TabIndex = 8
         '
         'lblFInicio
         '
-        Me.lblFInicio.Location = New System.Drawing.Point(585, 52)
+        Me.lblFInicio.Location = New System.Drawing.Point(276, 31)
         Me.lblFInicio.Name = "lblFInicio"
-        Me.lblFInicio.Size = New System.Drawing.Size(44, 13)
+        Me.lblFInicio.Size = New System.Drawing.Size(72, 13)
         Me.lblFInicio.TabIndex = 9
-        Me.lblFInicio.Text = "FInicio"
+        Me.lblFInicio.Text = "F. Inicio >="
+        '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(276, 65)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(72, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "F. Inicio <="
+        '
+        'clbCUAFInicioMenor
+        '
+        Me.clbCUAFInicioMenor.DisabledBackColor = System.Drawing.Color.White
+        Me.clbCUAFInicioMenor.Location = New System.Drawing.Point(354, 62)
+        Me.clbCUAFInicioMenor.Name = "clbCUAFInicioMenor"
+        Me.clbCUAFInicioMenor.Size = New System.Drawing.Size(123, 21)
+        Me.clbCUAFInicioMenor.TabIndex = 11
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(519, 65)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(57, 13)
+        Me.Label2.TabIndex = 12
+        Me.Label2.Text = "F. Fin <="
+        '
+        'clbCUAFFinMenor
+        '
+        Me.clbCUAFFinMenor.DisabledBackColor = System.Drawing.Color.White
+        Me.clbCUAFFinMenor.Location = New System.Drawing.Point(582, 62)
+        Me.clbCUAFFinMenor.Name = "clbCUAFFinMenor"
+        Me.clbCUAFFinMenor.Size = New System.Drawing.Size(121, 21)
+        Me.clbCUAFFinMenor.TabIndex = 13
         '
         'MntoBusquedaVehiculos
         '
@@ -228,4 +268,8 @@ Partial Class MntoBusquedaVehiculos
     Friend WithEvents lblFInicio As Solmicro.Expertis.Engine.UI.Label
     Friend WithEvents clbCUAFFin As Solmicro.Expertis.Engine.UI.CalendarBox
     Friend WithEvents lblFFin As Solmicro.Expertis.Engine.UI.Label
+    Friend WithEvents clbCUAFFinMenor As Solmicro.Expertis.Engine.UI.CalendarBox
+    Friend WithEvents Label2 As Solmicro.Expertis.Engine.UI.Label
+    Friend WithEvents clbCUAFInicioMenor As Solmicro.Expertis.Engine.UI.CalendarBox
+    Friend WithEvents Label1 As Solmicro.Expertis.Engine.UI.Label
 End Class

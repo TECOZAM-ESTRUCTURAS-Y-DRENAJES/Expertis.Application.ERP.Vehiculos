@@ -169,7 +169,10 @@ Public Class MntoBusquedaVehiculos
 
         e.Filter.Add("IDVehiculo", FilterOperator.Equal, advIDVehiculo.Value)
         e.Filter.Add("FInicio", FilterOperator.GreaterThanOrEqual, clbCUAFInicio.Value)
-        e.Filter.Add("FFin", FilterOperator.LessThanOrEqual, clbCUAFFin.Value)
+        e.Filter.Add("FInicio", FilterOperator.LessThanOrEqual, clbCUAFInicioMenor.Value)
+
+        e.Filter.Add("FFin", FilterOperator.GreaterThanOrEqual, clbCUAFFin.Value)
+        e.Filter.Add("FFin", FilterOperator.LessThanOrEqual, clbCUAFFinMenor.Value)
 
     End Sub
 

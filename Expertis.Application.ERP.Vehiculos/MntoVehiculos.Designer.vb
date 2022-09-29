@@ -436,7 +436,6 @@ Partial Class MntoVehiculos
         'Grid2
         '
         Me.Grid2.AllowAddNew = Janus.Windows.GridEX.InheritableBoolean.[False]
-        Me.Grid2.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
         Grid2_DesignTimeLayout.LayoutString = resources.GetString("Grid2_DesignTimeLayout.LayoutString")
         Me.Grid2.DesignTimeLayout = Grid2_DesignTimeLayout
         Me.Grid2.Dock = System.Windows.Forms.DockStyle.Fill
