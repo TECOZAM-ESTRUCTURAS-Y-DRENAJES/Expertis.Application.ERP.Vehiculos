@@ -48,7 +48,7 @@ Public Class MntoBusquedaVehiculos
             pila.Push("Al coche " & dt.Rows(i)("Matricula") & " le caduca la ITV a fecha " & dt.Rows(i)("FITV") & ".")
             'builder.Append(i).Append(dt.Rows(i)("Matricula"))
         Next
-        If (pila.Count = 0) Then
+        If (pila.Count = 1) Then
         Else
             Dim lista As New StringBuilder()
             For Each value As String In pila
