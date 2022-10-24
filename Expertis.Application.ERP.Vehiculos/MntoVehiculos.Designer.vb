@@ -108,14 +108,15 @@ Partial Class MntoVehiculos
         Me.UiTabPage1 = New Janus.Windows.UI.Tab.UITabPage
         Me.txtIDConsumo = New Solmicro.Expertis.Engine.UI.TextBox
         Me.Frame3 = New Solmicro.Expertis.Engine.UI.Frame
+        Me.Button5 = New Solmicro.Expertis.Engine.UI.Button
         Me.Label26 = New Solmicro.Expertis.Engine.UI.Label
-        Me.bActualizar = New Solmicro.Expertis.Engine.UI.Button
         Me.txtkm = New Solmicro.Expertis.Engine.UI.TextBox
-        Me.bGuardar = New Solmicro.Expertis.Engine.UI.Button
         Me.txtconsumo = New Solmicro.Expertis.Engine.UI.TextBox
         Me.Label27 = New Solmicro.Expertis.Engine.UI.Label
         Me.Label25 = New Solmicro.Expertis.Engine.UI.Label
         Me.cbFechaCons = New Solmicro.Expertis.Engine.UI.CalendarBox
+        Me.bActualizar = New Solmicro.Expertis.Engine.UI.Button
+        Me.bGuardar = New Solmicro.Expertis.Engine.UI.Button
         Me.Grid4 = New Solmicro.Expertis.Engine.UI.Grid
         Me.Label10 = New Solmicro.Expertis.Engine.UI.Label
         Me.cmbFITV = New Solmicro.Expertis.Engine.UI.CalendarBox
@@ -906,6 +907,8 @@ Partial Class MntoVehiculos
         '
         Me.UiTabPage1.Controls.Add(Me.txtIDConsumo)
         Me.UiTabPage1.Controls.Add(Me.Frame3)
+        Me.UiTabPage1.Controls.Add(Me.bActualizar)
+        Me.UiTabPage1.Controls.Add(Me.bGuardar)
         Me.UiTabPage1.Controls.Add(Me.Grid4)
         Me.UiTabPage1.Location = New System.Drawing.Point(1, 21)
         Me.UiTabPage1.Name = "UiTabPage1"
@@ -916,7 +919,7 @@ Partial Class MntoVehiculos
         'txtIDConsumo
         '
         Me.txtIDConsumo.DisabledBackColor = System.Drawing.Color.White
-        Me.txtIDConsumo.Location = New System.Drawing.Point(965, 172)
+        Me.txtIDConsumo.Location = New System.Drawing.Point(746, 168)
         Me.txtIDConsumo.Name = "txtIDConsumo"
         Me.txtIDConsumo.Size = New System.Drawing.Size(100, 21)
         Me.txtIDConsumo.TabIndex = 10
@@ -924,10 +927,9 @@ Partial Class MntoVehiculos
         '
         'Frame3
         '
+        Me.Frame3.Controls.Add(Me.Button5)
         Me.Frame3.Controls.Add(Me.Label26)
-        Me.Frame3.Controls.Add(Me.bActualizar)
         Me.Frame3.Controls.Add(Me.txtkm)
-        Me.Frame3.Controls.Add(Me.bGuardar)
         Me.Frame3.Controls.Add(Me.txtconsumo)
         Me.Frame3.Controls.Add(Me.Label27)
         Me.Frame3.Controls.Add(Me.Label25)
@@ -939,6 +941,14 @@ Partial Class MntoVehiculos
         Me.Frame3.TabStop = False
         Me.Frame3.Text = "Registro consumo"
         '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(196, 128)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 33
+        Me.Button5.Text = "Guardar"
+        '
         'Label26
         '
         Me.Label26.Location = New System.Drawing.Point(13, 59)
@@ -947,29 +957,13 @@ Partial Class MntoVehiculos
         Me.Label26.TabIndex = 5
         Me.Label26.Text = "Consumo"
         '
-        'bActualizar
-        '
-        Me.bActualizar.Location = New System.Drawing.Point(196, 134)
-        Me.bActualizar.Name = "bActualizar"
-        Me.bActualizar.Size = New System.Drawing.Size(75, 23)
-        Me.bActualizar.TabIndex = 2
-        Me.bActualizar.Text = "Actualizar"
-        '
         'txtkm
         '
         Me.txtkm.DisabledBackColor = System.Drawing.Color.White
         Me.txtkm.Location = New System.Drawing.Point(109, 84)
         Me.txtkm.Name = "txtkm"
         Me.txtkm.Size = New System.Drawing.Size(162, 21)
-        Me.txtkm.TabIndex = 8
-        '
-        'bGuardar
-        '
-        Me.bGuardar.Location = New System.Drawing.Point(35, 134)
-        Me.bGuardar.Name = "bGuardar"
-        Me.bGuardar.Size = New System.Drawing.Size(75, 23)
-        Me.bGuardar.TabIndex = 1
-        Me.bGuardar.Text = "Guardar"
+        Me.txtkm.TabIndex = 32
         '
         'txtconsumo
         '
@@ -977,7 +971,7 @@ Partial Class MntoVehiculos
         Me.txtconsumo.Location = New System.Drawing.Point(109, 51)
         Me.txtconsumo.Name = "txtconsumo"
         Me.txtconsumo.Size = New System.Drawing.Size(162, 21)
-        Me.txtconsumo.TabIndex = 7
+        Me.txtconsumo.TabIndex = 31
         '
         'Label27
         '
@@ -1001,12 +995,29 @@ Partial Class MntoVehiculos
         Me.cbFechaCons.Location = New System.Drawing.Point(109, 23)
         Me.cbFechaCons.Name = "cbFechaCons"
         Me.cbFechaCons.Size = New System.Drawing.Size(162, 21)
-        Me.cbFechaCons.TabIndex = 3
+        Me.cbFechaCons.TabIndex = 30
+        '
+        'bActualizar
+        '
+        Me.bActualizar.Location = New System.Drawing.Point(529, 74)
+        Me.bActualizar.Name = "bActualizar"
+        Me.bActualizar.Size = New System.Drawing.Size(75, 23)
+        Me.bActualizar.TabIndex = 34
+        Me.bActualizar.Text = "Actualizar"
+        Me.bActualizar.Visible = False
+        '
+        'bGuardar
+        '
+        Me.bGuardar.Location = New System.Drawing.Point(653, 168)
+        Me.bGuardar.Name = "bGuardar"
+        Me.bGuardar.Size = New System.Drawing.Size(75, 23)
+        Me.bGuardar.TabIndex = 33
+        Me.bGuardar.Text = "Guardar"
+        Me.bGuardar.Visible = False
         '
         'Grid4
         '
         Me.Grid4.AllowAddNew = Janus.Windows.GridEX.InheritableBoolean.[False]
-        Me.Grid4.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
         Grid4_DesignTimeLayout.LayoutString = resources.GetString("Grid4_DesignTimeLayout.LayoutString")
         Me.Grid4.DesignTimeLayout = Grid4_DesignTimeLayout
         Me.Grid4.EnterKeyBehavior = Janus.Windows.GridEX.EnterKeyBehavior.NextCell
@@ -1079,8 +1090,8 @@ Partial Class MntoVehiculos
         Me.ClientSize = New System.Drawing.Size(1087, 662)
         Me.EntityName = "Vehiculo"
         Me.Name = "MntoVehiculos"
-        Me.NavigationFields = "IDVehiculo"
-        Me.Text = "Form1"
+        Me.NavigationFields = "Matricula"
+        Me.Text = "Vehiculos"
         Me.ViewName = "tbMaestroVehiculos"
         CType(Me.ToolBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MenuBar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1210,5 +1221,6 @@ Partial Class MntoVehiculos
     Friend WithEvents cbFechaCons As Solmicro.Expertis.Engine.UI.CalendarBox
     Friend WithEvents Frame3 As Solmicro.Expertis.Engine.UI.Frame
     Friend WithEvents txtIDConsumo As Solmicro.Expertis.Engine.UI.TextBox
+    Friend WithEvents Button5 As Solmicro.Expertis.Engine.UI.Button
 
 End Class

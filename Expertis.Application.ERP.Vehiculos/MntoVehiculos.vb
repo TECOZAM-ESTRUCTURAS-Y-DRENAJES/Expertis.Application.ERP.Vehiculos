@@ -114,7 +114,15 @@ Public Class MntoVehiculos
                 dr("Encargado") = Nz(Me.advEncarg.SelectedRow("IDOperario"), "")
             End If
 
-            dr("Conductor1") = Me.advCond1.SelectedRow("IDOperario")
+            If Not Me.advCond1.Text = "" Then
+                'dr("Conductor1") = Me.advCond1.SelectedRow("IDOperario")
+                If ulC1.Text.Length = 0 Then
+                    dr("Conductor1") = Me.advCond1.Text
+                Else
+                    dr("Conductor1") = Me.advCond1.SelectedRow("IDOperario")
+                End If
+            End If
+            'dr("Conductor1") = Me.advCond1.SelectedRow("IDOperario")
             If Not Me.advCond2.Text = "" Then
                 dr("Conductor2") = Me.advCond2.SelectedRow("IDOperario")
             End If
@@ -167,6 +175,7 @@ Public Class MntoVehiculos
         If MsgBox("¿Desea guardar al histórico el registro actual y añadir uno nuevo?", MsgBoxStyle.YesNo, "Generar histórico") = MsgBoxResult.Yes Then
             Dim cons As New Consumo
             Dim dt As New DataTable
+            Dim cont As New ContratosPisos
 
             dt.Columns.Add("IDConsumo")
             dt.Columns.Add("IDVehiculo")
@@ -176,7 +185,7 @@ Public Class MntoVehiculos
 
             Dim dr As DataRow = dt.NewRow()
 
-            'dr("IDConsumo") = Me.CurrentRow("IDConsumo")
+            dr("IDConsumo") = cont.devuelveAutonumeri
             dr("IDVehiculo") = Me.CurrentRow("IDVehiculo")
             dr("Consumo") = Me.txtconsumo.Text
             dr("Kilometros") = Me.txtkm.Text
@@ -214,7 +223,11 @@ Public Class MntoVehiculos
             Me.advJProd.Value = Grid2.GetValue("JProd")
         End If
         Me.advEncarg.Text = Nz(Grid2.GetValue("Encargado"), "")
-        Me.advCond1.Text = Grid2.GetValue("Conductor1")
+        Me.advCond1.Text = Nz(Grid2.GetValue("Conductor1"), "")
+        'If Not IsDBNull(Grid2.GetValue("Conductor1")) Then
+        '    Me.advCond1.Text = Grid2.GetValue("Conductor1")
+        'End If
+
         If Not IsDBNull(Grid2.GetValue("Conductor2")) Then
             Me.advCond2.Text = Grid2.GetValue("Conductor2")
         End If
@@ -536,14 +549,12 @@ Public Class MntoVehiculos
         txtconsumo.Clear()
         cbFechaCons.Value = DBNull.Value
         txtkm.Clear()
-
-
     End Sub
 
 
     Private Sub bGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bGuardar.Click
         nuevoRegistroConsumo()
-        limpiarFormConsumo()
+        'limpiarFormConsumo()
 
     End Sub
 
@@ -557,13 +568,13 @@ Public Class MntoVehiculos
         Me.RequeryData()
     End Sub
 
-    Private Sub Grid4_RowDoubleClick(ByVal sender As System.Object, ByVal e As Janus.Windows.GridEX.RowActionEventArgs) Handles Grid4.RowDoubleClick
-        Me.txtconsumo.Text = Grid4.GetValue("Consumo")
-        Me.cbFechaCons.Value = Grid4.GetValue("Fecha")
-        Me.txtkm.Text = Grid4.GetValue("Kilometros")
-        Me.txtIDConsumo.Text = Grid4.GetValue("IDConsumo")
+    'Private Sub Grid4_RowDoubleClick(ByVal sender As System.Object, ByVal e As Janus.Windows.GridEX.RowActionEventArgs) Handles Grid4.RowDoubleClick
+    '    Me.txtconsumo.Text = Grid4.GetValue("Consumo")
+    '    Me.cbFechaCons.Value = Grid4.GetValue("Fecha")
+    '    Me.txtkm.Text = Grid4.GetValue("Kilometros")
+    '    Me.txtIDConsumo.Text = Grid4.GetValue("IDConsumo")
 
-    End Sub
+    'End Sub
 
     Private Sub cmbTipo_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbTipo.ValueChanged
         Dim empresa As String
@@ -578,8 +589,70 @@ Public Class MntoVehiculos
         Dim dt As New DataTable
         dt = New BE.DataEngine().Filter("tbVehiculoTarifa", filtro)
 
-        txtPrecio.Text = dt(0)("Precio")
+        Try
+            txtPrecio.Text = dt(0)("Precio")
+        Catch ex As Exception
+            txtPrecio.Text = ""
+        End Try
+
         filtro.Clear()
         dt = Nothing
+    End Sub
+
+    Private Sub txtMatricula_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMatricula.Leave
+        'MessageBox.Show(txtMatricula.Text)
+
+        Dim dt As New DataTable
+        Dim filtro As New Filter
+        filtro.Add("Matricula", FilterOperator.Equal, txtMatricula.Text)
+
+        dt = New BE.DataEngine().Filter("tbMaestroVehiculos", filtro)
+
+        If dt.Rows.Count > 0 Then
+            MessageBox.Show("Ya existe un coche con esta matrícula. Revise los vehiculos creados", "Espabila", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0)
+            'MessageBox.Show()
+            txtMatricula.Text = ""
+        End If
+    End Sub
+
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+        If MsgBox("¿Desea guardar al histórico el registro actual y añadir uno nuevo?", MsgBoxStyle.YesNo, "Generar histórico") = MsgBoxResult.Yes Then
+            Dim cons As New Consumo
+            Dim dt As New DataTable
+            Dim cont As New ContratosPisos
+
+            dt.Columns.Add("IDConsumo")
+            dt.Columns.Add("IDVehiculo")
+            dt.Columns.Add("Consumo")
+            dt.Columns.Add("Kilometros")
+            dt.Columns.Add("Fecha")
+
+            Dim dr As DataRow = dt.NewRow()
+
+            dr("IDConsumo") = cont.devuelveAutonumeri
+            dr("IDVehiculo") = Me.CurrentRow("IDVehiculo")
+            dr("Consumo") = Me.txtconsumo.Text
+            dr("Kilometros") = Me.txtkm.Text
+            dr("Fecha") = Me.cbFechaCons.Value
+
+            dt.Rows.Add(dr)
+
+            cons.Update(dt)
+            ' Limpiar memoria
+            cons = Nothing
+            Me.RequeryData()
+        End If
+    End Sub
+
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Dim obj As New Observaciones
+
+        Dim sql As String = "UPDATE tbVehiculoConsumo SET Consumo ='" & txtconsumo.Text & "', Fecha = '" & cbFechaCons.Value & "', Kilometros = '" & txtkm.Text & "' WHERE IDConsumo = " & txtIDConsumo.Text
+
+        obj.EjecutarSql(sql)
+
+        Me.Refresh()
+        limpiarFormConsumo()
+        'Me.RefreshData()
     End Sub
 End Class
