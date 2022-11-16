@@ -30,6 +30,7 @@ Partial Class MntoVehiculos
         Dim Grid2_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Dim Grid3_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Dim Grid4_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
+        Dim cmbImputacionCostes_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Me.txtMarcaModelo = New Solmicro.Expertis.Engine.UI.TextBox
         Me.cmbTipo = New Solmicro.Expertis.Engine.UI.ComboBox
         Me.Label1 = New Solmicro.Expertis.Engine.UI.Label
@@ -123,6 +124,8 @@ Partial Class MntoVehiculos
         Me.txtMatricula = New Solmicro.Expertis.Engine.UI.TextBox
         Me.Panel3 = New Solmicro.Expertis.Engine.UI.Panel
         Me.Panel4 = New Solmicro.Expertis.Engine.UI.Panel
+        Me.Label28 = New Solmicro.Expertis.Engine.UI.Label
+        Me.cmbImputacionCostes = New Solmicro.Expertis.Engine.UI.ComboBox
         CType(Me.ToolBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MenuBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UiCommandManager1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -148,6 +151,7 @@ Partial Class MntoVehiculos
         CType(Me.Grid4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.suspendlayout()
         Me.Panel4.suspendlayout()
+        CType(Me.cmbImputacionCostes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolBar
@@ -249,7 +253,7 @@ Partial Class MntoVehiculos
         Me.Tab.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Tab.Location = New System.Drawing.Point(0, 0)
         Me.Tab.Name = "Tab"
-        Me.Tab.Size = New System.Drawing.Size(1079, 517)
+        Me.Tab.Size = New System.Drawing.Size(1079, 502)
         Me.Tab.TabIndex = 10
         Me.Tab.TabPages.AddRange(New Janus.Windows.UI.Tab.UITabPage() {Me.TabContratos, Me.TabCuadrillas, Me.TabObservaciones, Me.UiTabPage1})
         Me.Tab.UseThemes = True
@@ -260,7 +264,7 @@ Partial Class MntoVehiculos
         Me.TabContratos.Controls.Add(Me.Panel5)
         Me.TabContratos.Location = New System.Drawing.Point(1, 21)
         Me.TabContratos.Name = "TabContratos"
-        Me.TabContratos.Size = New System.Drawing.Size(1077, 495)
+        Me.TabContratos.Size = New System.Drawing.Size(1077, 480)
         Me.TabContratos.TabStop = True
         Me.TabContratos.Text = "Contratos"
         '
@@ -270,7 +274,7 @@ Partial Class MntoVehiculos
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel6.Location = New System.Drawing.Point(0, 97)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1077, 398)
+        Me.Panel6.Size = New System.Drawing.Size(1077, 383)
         Me.Panel6.TabIndex = 31
         '
         'Grid1
@@ -285,7 +289,7 @@ Partial Class MntoVehiculos
         Me.Grid1.Name = "Grid1"
         Me.Grid1.PrimaryDataFields = "idVehiculo"
         Me.Grid1.SecondaryDataFields = "IDVehiculo"
-        Me.Grid1.Size = New System.Drawing.Size(1077, 398)
+        Me.Grid1.Size = New System.Drawing.Size(1077, 383)
         Me.Grid1.TabIndex = 11
         Me.Grid1.ViewName = "tbVehiculoContrato"
         '
@@ -1058,6 +1062,8 @@ Partial Class MntoVehiculos
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.cmbImputacionCostes)
+        Me.Panel3.Controls.Add(Me.Label28)
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Controls.Add(Me.txtMatricula)
         Me.Panel3.Controls.Add(Me.txtMarcaModelo)
@@ -1071,17 +1077,39 @@ Partial Class MntoVehiculos
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1079, 72)
+        Me.Panel3.Size = New System.Drawing.Size(1079, 87)
         Me.Panel3.TabIndex = 14
         '
         'Panel4
         '
         Me.Panel4.Controls.Add(Me.Tab)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 72)
+        Me.Panel4.Location = New System.Drawing.Point(0, 87)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1079, 517)
+        Me.Panel4.Size = New System.Drawing.Size(1079, 502)
         Me.Panel4.TabIndex = 15
+        '
+        'Label28
+        '
+        Me.Label28.Location = New System.Drawing.Point(22, 55)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(129, 13)
+        Me.Label28.TabIndex = 14
+        Me.Label28.Text = "Imputación de costes"
+        '
+        'cmbImputacionCostes
+        '
+        Me.TryDataBinding(cmbImputacionCostes, New System.Windows.Forms.Binding("Value", Me, "Imputacion", True))
+        cmbImputacionCostes_DesignTimeLayout.LayoutString = resources.GetString("cmbImputacionCostes_DesignTimeLayout.LayoutString")
+        Me.cmbImputacionCostes.DesignTimeLayout = cmbImputacionCostes_DesignTimeLayout
+        Me.cmbImputacionCostes.DisabledBackColor = System.Drawing.Color.White
+        Me.cmbImputacionCostes.DisplayMember = "TipoVehiculo"
+        Me.cmbImputacionCostes.Location = New System.Drawing.Point(176, 51)
+        Me.cmbImputacionCostes.Name = "cmbImputacionCostes"
+        Me.cmbImputacionCostes.SelectedIndex = -1
+        Me.cmbImputacionCostes.SelectedItem = Nothing
+        Me.cmbImputacionCostes.Size = New System.Drawing.Size(122, 21)
+        Me.cmbImputacionCostes.TabIndex = 15
         '
         'MntoVehiculos
         '
@@ -1126,6 +1154,7 @@ Partial Class MntoVehiculos
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
+        CType(Me.cmbImputacionCostes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1222,5 +1251,7 @@ Partial Class MntoVehiculos
     Friend WithEvents Frame3 As Solmicro.Expertis.Engine.UI.Frame
     Friend WithEvents txtIDConsumo As Solmicro.Expertis.Engine.UI.TextBox
     Friend WithEvents Button5 As Solmicro.Expertis.Engine.UI.Button
+    Friend WithEvents cmbImputacionCostes As Solmicro.Expertis.Engine.UI.ComboBox
+    Friend WithEvents Label28 As Solmicro.Expertis.Engine.UI.Label
 
 End Class

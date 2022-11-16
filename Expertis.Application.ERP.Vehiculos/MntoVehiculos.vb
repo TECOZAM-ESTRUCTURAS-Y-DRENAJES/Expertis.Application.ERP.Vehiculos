@@ -14,6 +14,25 @@ Public Class MntoVehiculos
         LoadToolBarActions()
         LoadGridActions()
 
+        cargarImputacion()
+    End Sub
+    Public Sub cargarImputacion()
+        Dim dtcombo As New DataTable
+        dtcombo.Columns.Add("Imputacion")
+        Dim dr As DataRow
+        dr = dtcombo.NewRow()
+        dr("Imputacion") = "ESPAÑA"
+        dtcombo.Rows.Add(dr)
+
+        dr = dtcombo.NewRow()
+        dr("Imputacion") = "PORTUGAL"
+        dtcombo.Rows.Add(dr)
+
+        dr = dtcombo.NewRow()
+        dr("Imputacion") = "STAFF"
+        dtcombo.Rows.Add(dr)
+
+        cmbImputacionCostes.DataSource = dtcombo
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
