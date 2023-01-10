@@ -123,9 +123,9 @@ Partial Class MntoVehiculos
         Me.cmbFITV = New Solmicro.Expertis.Engine.UI.CalendarBox
         Me.txtMatricula = New Solmicro.Expertis.Engine.UI.TextBox
         Me.Panel3 = New Solmicro.Expertis.Engine.UI.Panel
-        Me.Panel4 = New Solmicro.Expertis.Engine.UI.Panel
-        Me.Label28 = New Solmicro.Expertis.Engine.UI.Label
         Me.cmbImputacionCostes = New Solmicro.Expertis.Engine.UI.ComboBox
+        Me.Label28 = New Solmicro.Expertis.Engine.UI.Label
+        Me.Panel4 = New Solmicro.Expertis.Engine.UI.Panel
         CType(Me.ToolBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MenuBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.UiCommandManager1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -150,8 +150,8 @@ Partial Class MntoVehiculos
         Me.Frame3.SuspendLayout()
         CType(Me.Grid4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.suspendlayout()
-        Me.Panel4.suspendlayout()
         CType(Me.cmbImputacionCostes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.suspendlayout()
         Me.SuspendLayout()
         '
         'ToolBar
@@ -1080,23 +1080,6 @@ Partial Class MntoVehiculos
         Me.Panel3.Size = New System.Drawing.Size(1079, 87)
         Me.Panel3.TabIndex = 14
         '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.Tab)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 87)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1079, 502)
-        Me.Panel4.TabIndex = 15
-        '
-        'Label28
-        '
-        Me.Label28.Location = New System.Drawing.Point(22, 55)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(129, 13)
-        Me.Label28.TabIndex = 14
-        Me.Label28.Text = "Imputación de costes"
-        '
         'cmbImputacionCostes
         '
         Me.TryDataBinding(cmbImputacionCostes, New System.Windows.Forms.Binding("Value", Me, "Imputacion", True))
@@ -1110,6 +1093,23 @@ Partial Class MntoVehiculos
         Me.cmbImputacionCostes.SelectedItem = Nothing
         Me.cmbImputacionCostes.Size = New System.Drawing.Size(122, 21)
         Me.cmbImputacionCostes.TabIndex = 15
+        '
+        'Label28
+        '
+        Me.Label28.Location = New System.Drawing.Point(22, 55)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(129, 13)
+        Me.Label28.TabIndex = 14
+        Me.Label28.Text = "Imputación de costes"
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Tab)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel4.Location = New System.Drawing.Point(0, 87)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(1079, 502)
+        Me.Panel4.TabIndex = 15
         '
         'MntoVehiculos
         '
@@ -1153,8 +1153,8 @@ Partial Class MntoVehiculos
         CType(Me.Grid4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        Me.Panel4.ResumeLayout(False)
         CType(Me.cmbImputacionCostes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

@@ -42,7 +42,7 @@ Public Class MntoBusquedaVehiculos
         Next
         pila.Push("----------------------------------------")
         'ITV a 1 mes
-        sql = "SELECT * FROM xtecozam50r2..vVehiculocompleta where FITV<GETDATE()+31 AND FITV>=GETDATE()"
+        sql = "SELECT * FROM vVehiculocompleta where FITV<GETDATE()+31 AND FITV>=GETDATE()"
         dt = contrato.EjecutarSqlSelect(sql)
         For i As Integer = 0 To dt.Rows.Count - 1
             pila.Push("Al coche " & dt.Rows(i)("Matricula") & " le caduca la ITV a fecha " & dt.Rows(i)("FITV") & ".")
