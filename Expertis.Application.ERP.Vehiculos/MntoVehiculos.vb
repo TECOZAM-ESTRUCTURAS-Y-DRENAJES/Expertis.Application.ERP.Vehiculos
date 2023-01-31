@@ -376,12 +376,12 @@ Public Class MntoVehiculos
     End Sub
 
     Private Sub advEncarg_SetPredefinedFilter(ByVal sender As System.Object, ByVal e As Solmicro.Expertis.Engine.UI.AdvSearchFilterEventArgs) Handles advEncarg.SetPredefinedFilter
-        Dim FilOr As New Filter(FilterUnionOperator.Or)
-        FilOr.Add("IDOficio", FilterOperator.Equal, "Encargado")
-        FilOr.Add("IDOficio", FilterOperator.Equal, "Ingeniero")
-        FilOr.Add("IDOficio", FilterOperator.Equal, "Capataz")
-        e.Filter.Add(FilOr)
-        'e.Filter.Compose()
+        'Dim FilOr As New Filter(FilterUnionOperator.Or)
+        'FilOr.Add("IDOficio", FilterOperator.Equal, "Encargado")
+        'FilOr.Add("IDOficio", FilterOperator.Equal, "Ingeniero")
+        'FilOr.Add("IDOficio", FilterOperator.Equal, "Capataz")
+        'e.Filter.Add(FilOr)
+
 
     End Sub
 

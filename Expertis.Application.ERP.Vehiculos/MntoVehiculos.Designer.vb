@@ -425,7 +425,7 @@ Partial Class MntoVehiculos
         Me.TabCuadrillas.Controls.Add(Me.Panel1)
         Me.TabCuadrillas.Location = New System.Drawing.Point(1, 21)
         Me.TabCuadrillas.Name = "TabCuadrillas"
-        Me.TabCuadrillas.Size = New System.Drawing.Size(1077, 495)
+        Me.TabCuadrillas.Size = New System.Drawing.Size(1077, 480)
         Me.TabCuadrillas.TabStop = True
         Me.TabCuadrillas.Text = "Cuadrillas"
         '
@@ -435,7 +435,7 @@ Partial Class MntoVehiculos
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 302)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1077, 193)
+        Me.Panel2.Size = New System.Drawing.Size(1077, 178)
         Me.Panel2.TabIndex = 29
         '
         'Grid2
@@ -450,7 +450,7 @@ Partial Class MntoVehiculos
         Me.Grid2.Name = "Grid2"
         Me.Grid2.PrimaryDataFields = "IDVehiculo"
         Me.Grid2.SecondaryDataFields = "IDVehiculo"
-        Me.Grid2.Size = New System.Drawing.Size(1077, 193)
+        Me.Grid2.Size = New System.Drawing.Size(1077, 178)
         Me.Grid2.TabIndex = 20
         Me.Grid2.ViewName = "vFrmVehiculosCuadrillas"
         '

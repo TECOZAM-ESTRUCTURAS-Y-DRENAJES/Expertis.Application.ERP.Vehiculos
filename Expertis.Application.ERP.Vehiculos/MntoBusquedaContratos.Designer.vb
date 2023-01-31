@@ -69,6 +69,7 @@ Partial Class MntoBusquedaContratos
         '
         'Grid
         '
+        Me.Grid.ColumnAutoResize = True
         Grid_DesignTimeLayout.LayoutString = resources.GetString("Grid_DesignTimeLayout.LayoutString")
         Me.Grid.DesignTimeLayout = Grid_DesignTimeLayout
         Me.Grid.EntityName = "Contratos"
