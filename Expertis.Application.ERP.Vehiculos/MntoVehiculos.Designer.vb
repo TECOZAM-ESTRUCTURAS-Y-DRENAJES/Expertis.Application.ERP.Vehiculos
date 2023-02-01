@@ -829,7 +829,7 @@ Partial Class MntoVehiculos
         Me.TabObservaciones.Controls.Add(Me.Grid3)
         Me.TabObservaciones.Location = New System.Drawing.Point(1, 21)
         Me.TabObservaciones.Name = "TabObservaciones"
-        Me.TabObservaciones.Size = New System.Drawing.Size(1077, 495)
+        Me.TabObservaciones.Size = New System.Drawing.Size(1077, 480)
         Me.TabObservaciones.TabStop = True
         Me.TabObservaciones.Text = "Observaciones"
         '

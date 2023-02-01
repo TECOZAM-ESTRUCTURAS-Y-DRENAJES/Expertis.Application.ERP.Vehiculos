@@ -152,3 +152,4 @@ C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Ex
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Debug\Expertis.Application.ERP.Vehiculos.xml
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Debug\Expertis.Application.ERP.Vehiculos.pdb
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Debug\Expertis.Application.ERP.Vehiculos.FrmAddPrecios.resources
+C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Debug\Expertis.Application.ERP.Vehiculos.MntoBusquedaConsumo.resources

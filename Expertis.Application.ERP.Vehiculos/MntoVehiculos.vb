@@ -227,7 +227,7 @@ Public Class MntoVehiculos
         Me.cmbFFin.Value = Nz(Grid1.GetValue("FFin"), "")
         Me.txtLRecogida.Text = Nz(Grid1.GetValue("LRecogida"), "")
         Me.txtLEntrega.Text = Nz(Grid1.GetValue("LEntrega"), "")
-        Me.txtPrecio.Text = Nz(Grid1.GetValue("Precio"), "")
+        Me.txtPrecio.Text = Nz(Replace(Grid1.GetValue("Precio"), ".", ""), "")
 
     End Sub
 
@@ -260,7 +260,15 @@ Public Class MntoVehiculos
             Me.advCond5.Text = Grid2.GetValue("Conductor5")
         End If
         Me.cmCFInicio.Value = Nz(Grid2.GetValue("FInicio"), DBNull.Value)
-        Me.cmCFFin.Value = Nz(Grid2.GetValue("FFin"), DBNull.Value)
+
+        Try
+            If Grid2.GetValue("FFin").ToString.Length = 0 Then
+            Else
+                Me.cmCFFin.Text = Grid2.GetValue("FFin")
+            End If
+        Catch ex As Exception
+        End Try
+        
         Button1.Enabled = False
 
 
@@ -296,6 +304,76 @@ Public Class MntoVehiculos
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         ActualizarCuadrilla()
+        'ActualizarCuadrilla2()
+
+    End Sub
+    Private Sub ActualizarCuadrilla2()
+        Dim cuadrilla As New Cuadrillas
+        Dim cont As New ContratosPisos
+        Dim dt As New DataTable
+
+        dt.Columns.Add("IDCuadrilla")
+        dt.Columns.Add("IDVehiculo")
+        dt.Columns.Add("FInicio")
+        dt.Columns.Add("FFin")
+        dt.Columns.Add("Zona")
+        dt.Columns.Add("Provincia")
+        dt.Columns.Add("Obra")
+        dt.Columns.Add("JProd")
+        dt.Columns.Add("Encargado")
+        dt.Columns.Add("Conductor1")
+        dt.Columns.Add("Conductor2")
+        dt.Columns.Add("Conductor3")
+        dt.Columns.Add("Conductor4")
+        dt.Columns.Add("Conductor5")
+
+        Dim dr As DataRow = dt.NewRow()
+
+        dr("IDCuadrilla") = txtIDCuadrilla.Text
+        dr("IDVehiculo") = Nz(Me.CurrentRow("IDVehiculo"), "")
+        dr("FInicio") = Nz(Me.cmCFInicio.Value, "")
+        dr("FFin") = Nz(Me.cmCFFin.Value, "")
+        dr("Zona") = Nz(Me.txtZona.Text, "")
+        dr("Provincia") = Me.txtProvincia.Text
+        If Not Me.advObra.Text = "" Then
+            dr("Obra") = Nz(Me.advObra.SelectedRow("IDObra"), "")
+        Else
+            dr("Obra") = 11984995
+        End If
+
+        If Not Me.advJProd.Text = "" Then
+            dr("JProd") = Nz(Me.advJProd.SelectedRow("IDOperario"), "")
+        End If
+        If Not Me.advJProd.Text = "" Then
+            dr("Encargado") = Nz(Me.advEncarg.SelectedRow("IDOperario"), "")
+        End If
+
+        If Not Me.advCond1.Text = "" Then
+            If ulC1.Text.Length = 0 Then
+                dr("Conductor1") = Me.advCond1.Text
+            Else
+                dr("Conductor1") = Me.advCond1.SelectedRow("IDOperario")
+            End If
+        End If
+        'dr("Conductor1") = Me.advCond1.SelectedRow("IDOperario")
+        If Not Me.advCond2.Text = "" Then
+            dr("Conductor2") = Me.advCond2.SelectedRow("IDOperario")
+        End If
+        If Not Me.advCond3.Text = "" Then
+            dr("Conductor3") = Me.advCond3.SelectedRow("IDOperario")
+        End If
+        If Not Me.advCond4.Text = "" Then
+            dr("Conductor4") = Me.advCond4.SelectedRow("IDOperario")
+        End If
+        If Not Me.advCond5.Text = "" Then
+            dr("Conductor5") = Me.advCond5.SelectedRow("IDOperario")
+        End If
+        dt.Rows.Add(dr)
+
+        cuadrilla.Update(dt)
+        ' Limpiar memoria
+        cuadrilla = Nothing
+        Me.RequeryData()
     End Sub
 
     Private Sub ActualizarCuadrilla()
@@ -328,8 +406,13 @@ Public Class MntoVehiculos
             cond5 = Nz(advCond5.SelectedRow("IDOperario"), "")
         End If
 
-        Dim sql As String = "UPDATE tbVehiculoCuadrilla SET Zona ='" & txtZona.Text & "', Provincia = '" & txtProvincia.Text & "', Obra = '" & advObra.SelectedRow("IDObra") & "', Jprod = '" & advJProd.Text & "', Encargado = '" & advEncarg.Text & "', Conductor1 = '" & advCond1.Text & "', Conductor2 = '" & cond2 & "', Conductor3 = '" & cond3 & "', Conductor4 = '" & cond4 & "', Conductor5 = '" & cond5 & "', FInicio = '" & cmCFInicio.Value & "', FFin = '" & cmCFFin.Value & "' WHERE IDCuadrilla = " & txtIDCuadrilla.Text
-
+        Dim sql As String
+        'Si no hay fecha que no ponga por defecto 1/1/1990
+        If cmCFFin.Value.ToString.Length = 0 Then
+            sql = "UPDATE tbVehiculoCuadrilla SET Zona ='" & txtZona.Text & "', Provincia = '" & txtProvincia.Text & "', Obra = '" & advObra.SelectedRow("IDObra") & "', Jprod = '" & advJProd.Text & "', Encargado = '" & advEncarg.Text & "', Conductor1 = '" & advCond1.Text & "', Conductor2 = '" & cond2 & "', Conductor3 = '" & cond3 & "', Conductor4 = '" & cond4 & "', Conductor5 = '" & cond5 & "', FInicio = '" & cmCFInicio.Value & "' WHERE IDCuadrilla = " & txtIDCuadrilla.Text
+        Else
+            sql = "UPDATE tbVehiculoCuadrilla SET Zona ='" & txtZona.Text & "', Provincia = '" & txtProvincia.Text & "', Obra = '" & advObra.SelectedRow("IDObra") & "', Jprod = '" & advJProd.Text & "', Encargado = '" & advEncarg.Text & "', Conductor1 = '" & advCond1.Text & "', Conductor2 = '" & cond2 & "', Conductor3 = '" & cond3 & "', Conductor4 = '" & cond4 & "', Conductor5 = '" & cond5 & "', FInicio = '" & cmCFInicio.Value & "', FFin = '" & cmCFFin.Text & "' WHERE IDCuadrilla = " & txtIDCuadrilla.Text
+        End If
         obj.EjecutarSql(sql)
 
         Me.RequeryData()
@@ -341,10 +424,11 @@ Public Class MntoVehiculos
 
         Dim obj As New Contratos
         Dim sql As String
+        Dim precio = Replace(txtPrecio.Text, ",", ".")
         If cmbFFin.Value.ToString.Length = 0 Then
-            sql = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & txtPrecio.Text & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
+            sql = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & Nz(precio, 0) & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
         Else
-            sql = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', FFin = '" & cmbFFin.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & txtPrecio.Text & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
+            sql = "UPDATE tbVehiculoContrato SET Empresa = '" & Me.CurrentRow("Empresa") & "', FInicio ='" & cmbFInicio.Value & "', FFin = '" & cmbFFin.Value & "', LRecogida = '" & txtLRecogida.Text & "', LEntrega = '" & txtLEntrega.Text & "', Precio = '" & Nz(precio, 0) & "' WHERE IDContrato = '" & txtIDContrato.Text & "'"
         End If
 
 
