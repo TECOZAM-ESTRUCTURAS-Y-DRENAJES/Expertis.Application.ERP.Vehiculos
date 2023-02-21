@@ -54,7 +54,7 @@ Public Class MntoBusquedaVehiculos
             For Each value As String In pila
                 lista.Append(value & "" & vbCrLf)
             Next
-            MessageBox.Show(lista.ToString, "Pero ven a vermeeee. Dile que venga", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0)
+            MessageBox.Show(lista.ToString, "AVISO ITV VEHICULOS", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0)
             'MsgBox(lista.ToString())
         End If
     End Sub

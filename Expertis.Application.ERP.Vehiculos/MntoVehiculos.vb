@@ -690,9 +690,10 @@ Public Class MntoVehiculos
         filtro.Add("TipoVehiculo", FilterOperator.Equal, tipo)
 
         Dim dt As New DataTable
-        dt = New BE.DataEngine().Filter("tbVehiculoTarifa", filtro)
-
         Try
+            dt = New BE.DataEngine().Filter("tbVehiculoTarifa", filtro)
+
+
             txtPrecio.Text = dt(0)("Precio")
         Catch ex As Exception
             txtPrecio.Text = ""
