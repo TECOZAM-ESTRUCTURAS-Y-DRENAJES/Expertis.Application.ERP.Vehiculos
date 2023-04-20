@@ -636,6 +636,11 @@ Public Class MntoVehiculos
         limpiarFormCuadrilla()
         limpiarFormContrato()
         limpiarFormConsumo()
+        BloqueoDatos()
+    End Sub
+
+    Public Sub BloqueoDatos()
+        txtMatricula.Enabled = False
     End Sub
     Private Sub limpiarFormContrato()
         cmbFInicio.Value = DBNull.Value
@@ -704,7 +709,6 @@ Public Class MntoVehiculos
     End Sub
 
     Private Sub txtMatricula_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMatricula.Leave
-        'MessageBox.Show(txtMatricula.Text)
 
         Dim dt As New DataTable
         Dim filtro As New Filter
@@ -714,7 +718,6 @@ Public Class MntoVehiculos
 
         If dt.Rows.Count > 0 Then
             MessageBox.Show("Ya existe un coche con esta matrícula. Revise los vehiculos creados", "Espabila", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0)
-            'MessageBox.Show()
             txtMatricula.Text = ""
         End If
     End Sub
@@ -758,5 +761,9 @@ Public Class MntoVehiculos
         Me.Refresh()
         limpiarFormConsumo()
         'Me.RefreshData()
+    End Sub
+
+    Private Sub MntoVehiculos_RecordAdded(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.RecordAdded
+        txtMatricula.Enabled = True
     End Sub
 End Class
