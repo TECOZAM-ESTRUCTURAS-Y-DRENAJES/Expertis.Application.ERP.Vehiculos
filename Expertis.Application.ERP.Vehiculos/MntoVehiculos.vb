@@ -4,6 +4,8 @@ Imports Solmicro.Expertis.Engine.DAL
 Imports Solmicro.Expertis.Engine.UI
 Imports Solmicro.Expertis.Application.ERP.GlobalActions
 Imports Expertis.Business.Pisos
+Imports OfficeOpenXml
+Imports System.Globalization
 
 Public Class MntoVehiculos
     Inherits Solmicro.Expertis.Engine.UI.SimpleMnto
@@ -268,7 +270,7 @@ Public Class MntoVehiculos
             End If
         Catch ex As Exception
         End Try
-        
+
         Button1.Enabled = False
 
 
@@ -521,8 +523,135 @@ Public Class MntoVehiculos
         Me.FormActions.Add("Añadir y/o Modificar Tarifa Vehiculo", AddressOf AccionNuevaTarifa)
         Me.AddSeparator()
         Me.FormActions.Add("Actualizar tarifas", AddressOf ActualizarTarifas)
+        Me.AddSeparator()
+        Me.FormActions.Add("Vehículos entre dos fechas. Mensual.", AddressOf VehiculosEntreFechas)
 
     End Sub
+    Public Sub VehiculosEntreFechas()
+        Dim fecha1 As String
+        Dim fecha2 As String
+
+        Dim frm As New frmInformeFecha
+        frm.ShowDialog()
+
+        fecha1 = frm.fecha1
+        fecha2 = frm.fecha2
+
+        Dim sql As String
+        sql = "select DescEmpresa, Matricula, MarcaModelo, FInicio, FFin, Precio from vFrmBusquedaVehiculos where (FInicio<='" & fecha2 & "' and ffin is null) "
+        sql &= "or(FFin>='" & fecha1 & "' and ffin<='" & fecha2 & "')"
+
+        Dim contrato As New Business.Vehiculos.Contratos
+        Dim dtVehiculos As New DataTable
+        dtVehiculos = contrato.EjecutarSqlSelect(sql)
+
+        Dim dtFinal As DataTable = DevuelveTablaOrdenada(dtVehiculos, fecha2)
+        Dim ruta As String
+        ruta = DevuelveRuta()
+
+        GuardaExcel(ruta, dtFinal)
+    End Sub
+    Public Function DevuelveTablaOrdenada(ByVal dtVehiculos As DataTable, ByVal Fecha2 As String)
+        Dim dt As New DataTable
+
+        Dim dc As New DataColumn("EMPRESA")
+        dt.Columns.Add(dc)
+        dc = New DataColumn("MATRICULA")
+        dt.Columns.Add(dc)
+        dc = New DataColumn("MODELO")
+        dt.Columns.Add(dc)
+        dc = New DataColumn("FINICIO", System.Type.GetType("System.String"))
+        dt.Columns.Add(dc)
+        dc = New DataColumn("FFIN", System.Type.GetType("System.String"))
+        dt.Columns.Add(dc)
+        dc = New DataColumn("PRECIO", System.Type.GetType("System.Double"))
+        dt.Columns.Add(dc)
+        dc = New DataColumn("IMPORTE", System.Type.GetType("System.Double"))
+        dt.Columns.Add(dc)
+
+        Dim dia1 As Integer
+        Dim formatoFecha As String = "dd/MM/yyyy" ' Formato de fecha esperado
+
+        For Each dr As DataRow In dtVehiculos.Rows
+            Dim drFinal As DataRow
+            drFinal = dt.NewRow
+            drFinal("EMPRESA") = dr("DescEmpresa")
+            drFinal("MATRICULA") = dr("Matricula")
+            drFinal("MODELO") = dr("MarcaModelo")
+            drFinal("FINICIO") = dr("FINICIO").ToString.Substring(0, dr("FINICIO").ToString.Length - 8)
+            drFinal("PRECIO") = dr("Precio")
+            If dr("FFin").ToString.Length = 0 Then
+                drFinal("FFIN") = ""
+                drFinal("IMPORTE") = dr("Precio")
+            Else
+                drFinal("FFIN") = dr("FFin").ToString.Substring(0, dr("FFin").ToString.Length - 8)
+                'Saco el día de la ffin
+                'Multiplico por el precio y divido entre el total de dias del mes
+                Dim fecha As DateTime = DateTime.ParseExact(dr("FFin"), formatoFecha, CultureInfo.InvariantCulture)
+                dia1 = fecha.Day
+                'Se pone 30 .Conversación con Castro por generalizar
+                '11/8/23
+                drFinal("IMPORTE") = (dr("Precio") * dia1) / 30
+            End If
+
+            dt.Rows.Add(drFinal)
+        Next
+
+        Return dt
+    End Function
+
+    Public Function DevuelveRuta() As String
+        Dim CD As New SaveFileDialog()
+
+        CD.Title = "Seleccionar archivos"
+        CD.Filter = "Archivos Excel (*.xlsx)|*.xlsx"
+
+        'CD.ShowOpen()
+        CD.ShowDialog()
+
+        If CD.FileName <> "" Then
+            'lblRuta.Caption = CD.FileName
+            Return CD.FileName
+        End If
+    End Function
+
+    Public Sub GuardaExcel(ByVal ruta As String, ByVal dtFinal As DataTable)
+        Dim sumaTotal As Double = 0
+        For Each dr As DataRow In dtFinal.Rows
+            sumaTotal += dr("IMPORTE")
+        Next
+
+
+        ExcelPackage.LicenseContext = LicenseContext.NonCommercial
+
+        Using package As New ExcelPackage(ruta)
+            ' Crear una hoja de cálculo y obtener una referencia a ella.
+            Dim worksheet = package.Workbook.Worksheets.Add("COCHES")
+
+            ' Copiar los datos de la DataTable a la hoja de cálculo.
+            worksheet.Cells("A1").LoadFromDataTable(dtFinal, True)
+            worksheet.Column(10).Width = 15
+
+            worksheet.Cells("I3").Value = "TOTAL"
+            worksheet.Cells("J3").Value = sumaTotal
+            worksheet.Cells("J3").Style.Numberformat.Format = "#,##0.00€"
+            ' Aplicar formato negrita a la fila 1
+            Dim fila1 As ExcelRange = worksheet.Cells(1, 1, 1, worksheet.Dimension.End.Column)
+            fila1.Style.Font.Bold = True
+
+            ' Establecer el formato de la columna G a partir de la fila 2
+            Dim columnaF As ExcelRange = worksheet.Cells("F2:G" & worksheet.Dimension.End.Row)
+            columnaF.Style.Numberformat.Format = "#,##0.00€"
+
+            ' Establecer el formato de la columna G a partir de la fila 2
+            Dim columnaG As ExcelRange = worksheet.Cells("F2:G" & worksheet.Dimension.End.Row)
+            columnaG.Style.Numberformat.Format = "#,##0.00€"
+
+            ' Guardar el archivo de Excel.
+            package.Save()
+        End Using
+    End Sub
+
     Public Sub ActualizarTarifas()
         'Tengo que recojer todos los contratos(tbVehiculoContrato) cuya
         'FFin sea nula, es decir, que el contrato siga en pie.

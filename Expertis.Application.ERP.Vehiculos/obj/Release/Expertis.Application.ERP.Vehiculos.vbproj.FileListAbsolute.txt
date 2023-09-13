@@ -58,3 +58,18 @@ C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Ex
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.frmInformeFecha.resources
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddPrecios.resources
 C:\Users\lgonzalez\Desktop\EXPERTIS\DESARROLLO EXPERTIS\FR2Sergio\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoBusquedaConsumo.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\ResolveAssemblyReference.cache
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddPrecios.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddTipo.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.FrmAddEmpresa.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.frmInformeFecha.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoBusquedaConsumo.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoBusquedaContratos.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoBusquedaVehiculos.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.MntoVehiculos.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.Resources.resources
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.vbproj.GenerateResource.Cache
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.dll.licenses
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.dll
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.xml
+C:\Users\dvelasco\Desktop\FuentesExpertis\Application\Expertis.Application.ERP.Vehiculos\Expertis.Application.ERP.Vehiculos\obj\Release\Expertis.Application.ERP.Vehiculos.pdb

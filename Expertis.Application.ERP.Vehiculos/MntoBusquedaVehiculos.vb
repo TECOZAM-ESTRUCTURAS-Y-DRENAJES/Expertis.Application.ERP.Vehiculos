@@ -160,9 +160,7 @@ Public Class MntoBusquedaVehiculos
         Dim dt As New DataTable
         dt = contrato.EjecutarSqlSelect(sql)
 
-
         Grid.DataSource = dt
-
     End Sub
 
     Protected Overridable Sub AplicarFiltros(ByRef e As Engine.UI.QueryExecutingEventArgs)
