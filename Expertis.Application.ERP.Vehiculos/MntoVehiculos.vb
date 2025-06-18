@@ -895,4 +895,5 @@ Public Class MntoVehiculos
     Private Sub MntoVehiculos_RecordAdded(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.RecordAdded
         txtMatricula.Enabled = True
     End Sub
+
 End Class

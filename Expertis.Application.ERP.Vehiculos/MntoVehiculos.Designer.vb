@@ -30,6 +30,7 @@ Partial Class MntoVehiculos
         Dim Grid2_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Dim Grid3_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Dim Grid4_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
+        Dim Grid5_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Dim cmbImputacionCostes_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout
         Me.txtMarcaModelo = New Solmicro.Expertis.Engine.UI.TextBox
         Me.cmbTipo = New Solmicro.Expertis.Engine.UI.ComboBox
@@ -119,6 +120,8 @@ Partial Class MntoVehiculos
         Me.bActualizar = New Solmicro.Expertis.Engine.UI.Button
         Me.bGuardar = New Solmicro.Expertis.Engine.UI.Button
         Me.Grid4 = New Solmicro.Expertis.Engine.UI.Grid
+        Me.UiTabPage2 = New Janus.Windows.UI.Tab.UITabPage
+        Me.Grid5 = New Solmicro.Expertis.Engine.UI.Grid
         Me.Label10 = New Solmicro.Expertis.Engine.UI.Label
         Me.cmbFITV = New Solmicro.Expertis.Engine.UI.CalendarBox
         Me.txtMatricula = New Solmicro.Expertis.Engine.UI.TextBox
@@ -149,6 +152,8 @@ Partial Class MntoVehiculos
         Me.UiTabPage1.SuspendLayout()
         Me.Frame3.SuspendLayout()
         CType(Me.Grid4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.UiTabPage2.SuspendLayout()
+        CType(Me.Grid5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.suspendlayout()
         CType(Me.cmbImputacionCostes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.suspendlayout()
@@ -255,7 +260,7 @@ Partial Class MntoVehiculos
         Me.Tab.Name = "Tab"
         Me.Tab.Size = New System.Drawing.Size(1079, 502)
         Me.Tab.TabIndex = 10
-        Me.Tab.TabPages.AddRange(New Janus.Windows.UI.Tab.UITabPage() {Me.TabContratos, Me.TabCuadrillas, Me.TabObservaciones, Me.UiTabPage1})
+        Me.Tab.TabPages.AddRange(New Janus.Windows.UI.Tab.UITabPage() {Me.TabContratos, Me.TabCuadrillas, Me.TabObservaciones, Me.UiTabPage1, Me.UiTabPage2})
         Me.Tab.UseThemes = True
         '
         'TabContratos
@@ -916,7 +921,7 @@ Partial Class MntoVehiculos
         Me.UiTabPage1.Controls.Add(Me.Grid4)
         Me.UiTabPage1.Location = New System.Drawing.Point(1, 21)
         Me.UiTabPage1.Name = "UiTabPage1"
-        Me.UiTabPage1.Size = New System.Drawing.Size(1077, 495)
+        Me.UiTabPage1.Size = New System.Drawing.Size(1077, 480)
         Me.UiTabPage1.TabStop = True
         Me.UiTabPage1.Text = "Consumo"
         '
@@ -1033,6 +1038,31 @@ Partial Class MntoVehiculos
         Me.Grid4.Size = New System.Drawing.Size(1077, 262)
         Me.Grid4.TabIndex = 0
         Me.Grid4.ViewName = "tbVehiculoConsumo"
+        '
+        'UiTabPage2
+        '
+        Me.UiTabPage2.Controls.Add(Me.Grid5)
+        Me.UiTabPage2.Location = New System.Drawing.Point(1, 21)
+        Me.UiTabPage2.Name = "UiTabPage2"
+        Me.UiTabPage2.Size = New System.Drawing.Size(1077, 480)
+        Me.UiTabPage2.TabStop = True
+        Me.UiTabPage2.Text = "Sustituciones"
+        '
+        'Grid5
+        '
+        Me.Grid5.ColumnAutoResize = True
+        Grid5_DesignTimeLayout.LayoutString = resources.GetString("Grid5_DesignTimeLayout.LayoutString")
+        Me.Grid5.DesignTimeLayout = Grid5_DesignTimeLayout
+        Me.Grid5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Grid5.EnterKeyBehavior = Janus.Windows.GridEX.EnterKeyBehavior.NextCell
+        Me.Grid5.EntityName = "VehiculoSustitucion"
+        Me.Grid5.Location = New System.Drawing.Point(0, 0)
+        Me.Grid5.Name = "Grid5"
+        Me.Grid5.PrimaryDataFields = "IDVehiculo"
+        Me.Grid5.SecondaryDataFields = "IDVehiculo"
+        Me.Grid5.Size = New System.Drawing.Size(1077, 480)
+        Me.Grid5.TabIndex = 1
+        Me.Grid5.ViewName = "tbSustitucionVehiculo"
         '
         'Label10
         '
@@ -1151,6 +1181,8 @@ Partial Class MntoVehiculos
         Me.Frame3.ResumeLayout(False)
         Me.Frame3.PerformLayout()
         CType(Me.Grid4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.UiTabPage2.ResumeLayout(False)
+        CType(Me.Grid5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         CType(Me.cmbImputacionCostes, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1253,5 +1285,7 @@ Partial Class MntoVehiculos
     Friend WithEvents Button5 As Solmicro.Expertis.Engine.UI.Button
     Friend WithEvents cmbImputacionCostes As Solmicro.Expertis.Engine.UI.ComboBox
     Friend WithEvents Label28 As Solmicro.Expertis.Engine.UI.Label
+    Friend WithEvents UiTabPage2 As Janus.Windows.UI.Tab.UITabPage
+    Friend WithEvents Grid5 As Solmicro.Expertis.Engine.UI.Grid
 
 End Class
